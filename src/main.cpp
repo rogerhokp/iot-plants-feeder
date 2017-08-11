@@ -9,8 +9,9 @@
 #define MH_SENSOR A0
 #define NOTI_LED D0
 
-#define ssid "hihi"
-#define password "Sss99889988"
+#define ssid ""
+#define password ""
+#define endpoint ""
 
 OneWire oneWire(ONE_WIRE_BUS);
 
@@ -34,7 +35,7 @@ void setup(void)
 void postResult(float t, float mh) {
 
   HTTPClient http;
-  http.begin("http://iot-rogerhokp.rhcloud.com/dirt");
+  http.begin(endpoint);
   http.addHeader("Content-Type", "application/json; charset=utf-8");
   http.POST("{\"temperature\":" + String(t) + ",\"mh\":" + String(mh) + "}");
   Serial.println("POST REQUEST {\"temperature\":" + String(t) + ",\"mh\":" + String(mh) + "}");
